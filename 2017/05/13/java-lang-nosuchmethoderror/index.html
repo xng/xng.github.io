@@ -222,7 +222,7 @@
 
     <div class="post-content">
       
-        <p>的最近项目启动遇到一个问题，完整报错信息如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Context initialization failed</span><br><span class="line"></span><br><span class="line">java.lang.NoSuchMethodError: org.springframework.beans.factory.support.DefaultListableBeanFactory.getDependencyComparator()Ljava/util/Comparator;</span><br></pre></td></tr></table></figure></p>
+        <p>的最近项目启动遇到一个问题，完整报错信息如下：<br><a id="more"></a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Context initialization failed</span><br><span class="line"></span><br><span class="line">java.lang.NoSuchMethodError: org.springframework.beans.factory.support.DefaultListableBeanFactory.getDependencyComparator()Ljava/util/Comparator;</span><br></pre></td></tr></table></figure></p>
 <p>DefaultListableBeanFactory找不到这个方法getDependencyComparator,先查找这个类到底有没有这个方法，发现这个类出现在两个包里，如下</p>
 <p> <img src="http://www.dacai.me/wp-content/uploads/2017/03/nosuchMethod-1024x138.png" alt=""> 分别是spring4.<em>和spring2.</em>，很明显是jar包冲突的问题了，一个版本里面有这个方法，另一个没有，把没有的那个版本，一般是低版本，排除掉，再启动，ok了，还有个坑就是这个问题本地用jetty起一直没报出来，上了服务器是tomcat就出来了，可能是择包的机制不一样吧。</p>
 
