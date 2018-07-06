@@ -17,8 +17,12 @@
 
 
 
+  <meta name="description" content="java.lang.NoSuchMethodError"/>
 
 
+
+
+  <meta name="keywords" content="排错, 大菜点墨" />
 
 
 
@@ -38,7 +42,7 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/archives/"/>
+<link rel="canonical" href="http://yoursite.com/2017/05/13/java-lang-nosuchmethoderror/"/>
 
 
 
@@ -95,11 +99,7 @@
   window.config = {"title":"大菜点墨","subtitle":null,"description":null,"author":"大菜","language":null,"timezone":null,"url":"http://yoursite.com","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"even","deploy":{"type":"git","repo":"https://github.com/xng/xng.github.io.git","branch":"master"},"ignore":[],"keywords":null,"index_generator":{"per_page":10,"order_by":"-date","path":""},"search":{"path":"search.json","field":"post"},"ba_track_id":"167a0cde67cf2024594b6b43dc218cdb","archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false,"order_by":"-date"},"category_generator":{"per_page":10},"tag_generator":{"per_page":10},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true},"since":2015,"favicon":"/favicon.ico","rss":"default","menu":{"Home":"/","Archives":"/archives/","Tags":"/tags"},"color":"Default","toc":true,"fancybox":true,"pjax":true,"copyright":{"enable":true,"license":"<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc/4.0/\" target=\"_blank\">知识共享署名-非商业性使用 4.0 国际许可协议</a>"},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":"your@email.com","stack-overflow":null,"twitter":null,"facebook":null,"linkedin":null,"google":null,"github":"https://github.com/xng","weibo":null,"zhihu":null,"douban":null,"pocket":null,"tumblr":null,"instagram":null},"leancloud":{"app_id":null,"app_key":null},"baidu_analytics":"167a0cde67cf2024594b6b43dc218cdb","baidu_verification":null,"google_analytics":null,"google_verification":null,"disqus_shortname":null,"changyan":{"appid":"cyrU6pqHk","appkey":"prod_53bf1fe85e73d32c3db7e95ec5b6e0be"},"livere_datauid":null,"version":"2.9.0"};
 </script>
 
-    <title>
-  
-    归档 - 大菜点墨
-  
-</title>
+    <title> java.lang.NoSuchMethodError - 大菜点墨 </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -193,154 +193,115 @@
           <div id="content" class="content">
             
   
-  <section id="archive" class="archive">
-    
-      
-        <div class="archive-title">
-          <span class="archive-post-counter">
-            目前共计 6 篇日志
-          </span>
-        </div>
-      
-    
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          java.lang.NoSuchMethodError
+        
+      </h1>
 
-    
-      
+      <div class="post-meta">
+        <span class="post-time">
+          2017-05-13
+        </span>
         
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2017</h2>
+          <div class="post-category">
+            
+              <a href="/categories/java/">java</a>
+            
           </div>
         
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            05-13
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2017/05/13/java-lang-nosuchmethoderror/" class="archive-post-link">
-            java.lang.NoSuchMethodError
-          </a>
-        </span>
+        
       </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        <p>的最近项目启动遇到一个问题，完整报错信息如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Context initialization failed</span><br><span class="line"></span><br><span class="line">java.lang.NoSuchMethodError: org.springframework.beans.factory.support.DefaultListableBeanFactory.getDependencyComparator()Ljava/util/Comparator;</span><br></pre></td></tr></table></figure></p>
+<p>DefaultListableBeanFactory找不到这个方法getDependencyComparator,先查找这个类到底有没有这个方法，发现这个类出现在两个包里，如下</p>
+<p> <img src="http://www.dacai.me/wp-content/uploads/2017/03/nosuchMethod-1024x138.png" alt=""> 分别是spring4.<em>和spring2.</em>，很明显是jar包冲突的问题了，一个版本里面有这个方法，另一个没有，把没有的那个版本，一般是低版本，排除掉，再启动，ok了，还有个坑就是这个问题本地用jetty起一直没报出来，上了服务器是tomcat就出来了，可能是择包的机制不一样吧。</p>
+
+      
+    </div>
+
     
       
-        
-        
-
-        
       
 
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            03-21
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2017/03/21/getting-started-with-node-js/" class="archive-post-link">
-            node.js入门
-          </a>
-        </span>
-      </div>
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://yoursite.com">大菜</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://yoursite.com/2017/05/13/java-lang-nosuchmethoderror/">http://yoursite.com/2017/05/13/java-lang-nosuchmethoderror/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
     
-      
-        
-        
 
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            01-23
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2017/01/23/recommended-programmer-mac-app/" class="archive-post-link">
-            程序员用Mac推荐APP
-          </a>
-        </span>
-      </div>
     
-      
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/排错/">排错</a>
+            
+          </div>
         
         
-
         
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            01-22
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2017/01/22/programmers-how-to-improve-work-efficiency/" class="archive-post-link">
-            程序员如何提高工作效率
-          </a>
-        </span>
-      </div>
+  <nav class="post-nav">
     
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            01-22
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2017/01/22/transaction-rolled-back-because-it-has-been-marked-as-rollback-only/" class="archive-post-link">
-            Transaction rolled back because it has been marked as rollback-only
-          </a>
-        </span>
-      </div>
     
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            01-22
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2017/01/22/centos6-8-yum-install-mysql5-7/" class="archive-post-link">
-            CentOS6.8通过yum安装mysql5.7
-          </a>
-        </span>
-      </div>
-    
-  </section>
-
-  
-  <nav class="pagination">
-    
+      <a class="next" href="/2017/03/21/getting-started-with-node-js/">
+        <span class="next-text nav-default">node.js入门</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
+      </footer>
+    
+
+  </article>
 
 
           </div>
+
+          
+            
+  
+  
+<!-- SOHUCS Comments -->
+<div id="SOHUCS"></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cyrU6pqHk';
+var conf = 'prod_53bf1fe85e73d32c3db7e95ec5b6e0be';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })();
+</script>
+
+
+  
+
 
           
         </div>

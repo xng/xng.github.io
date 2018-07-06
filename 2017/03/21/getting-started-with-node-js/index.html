@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="node.js入门"/>
+
+
+
+
+  <meta name="keywords" content="node, 大菜点墨" />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="大菜点墨">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.9.0" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2017/03/21/getting-started-with-node-js/"/>
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css" />
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.9.0" />
+
+
+
+  
+  <script id="baidu_analytics">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?167a0cde67cf2024594b6b43dc218cdb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+<script>
+  window.config = {"title":"大菜点墨","subtitle":null,"description":null,"author":"大菜","language":null,"timezone":null,"url":"http://yoursite.com","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"even","deploy":{"type":"git","repo":"https://github.com/xng/xng.github.io.git","branch":"master"},"ignore":[],"keywords":null,"index_generator":{"per_page":10,"order_by":"-date","path":""},"search":{"path":"search.json","field":"post"},"ba_track_id":"167a0cde67cf2024594b6b43dc218cdb","archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false,"order_by":"-date"},"category_generator":{"per_page":10},"tag_generator":{"per_page":10},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true},"since":2015,"favicon":"/favicon.ico","rss":"default","menu":{"Home":"/","Archives":"/archives/","Tags":"/tags"},"color":"Default","toc":true,"fancybox":true,"pjax":true,"copyright":{"enable":true,"license":"<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc/4.0/\" target=\"_blank\">知识共享署名-非商业性使用 4.0 国际许可协议</a>"},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":"your@email.com","stack-overflow":null,"twitter":null,"facebook":null,"linkedin":null,"google":null,"github":"https://github.com/xng","weibo":null,"zhihu":null,"douban":null,"pocket":null,"tumblr":null,"instagram":null},"leancloud":{"app_id":null,"app_key":null},"baidu_analytics":"167a0cde67cf2024594b6b43dc218cdb","baidu_verification":null,"google_analytics":null,"google_verification":null,"disqus_shortname":null,"changyan":{"appid":"cyrU6pqHk","appkey":"prod_53bf1fe85e73d32c3db7e95ec5b6e0be"},"livere_datauid":null,"version":"2.9.0"};
+</script>
+
+    <title> node.js入门 - 大菜点墨 </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">大菜点墨</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">大菜点墨</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          node.js入门
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017-03-21
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/node/">node</a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        <p>nodejs是什么？ nodejs并不是一门新的语言，Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。 谷歌V8又是什么？ V8 是 Google 发布的开源 JavaScript 引擎，采用 C++ 编写，在 Google 的 浏览器中被使用。V8 引擎可以独立运行，也可以用来嵌入到 C++ 应用程序中执行，简单的说就是nodejs是一个JavaScript运行环境，可以让JavaScript运行在服务端，而不是局限于浏览器。依靠谷歌V8引擎解释和执行JavaScript。同时nodejs提供了很多模块，比如http模块，文件读写模块，所以nodejs也是一个库。架构大概如下图<br><a id="more"></a><br><img src="http://www.dacai.me/wp-content/uploads/2017/03/屏幕快照-2017-03-21-下午4.22.10-1024x519.png" alt=""> 除了使 用 V8 作为JavaScript引擎以外，对不同系统抽象出中间层libuv，实现高性能的异步I/O访问。 为什么使用nodejs? 前面说了nodejs是一个使用了事件驱动，非阻塞式I/O模型，什么非阻塞式I/O模型？ 什么是阻塞，什么是非阻塞？ 阻塞就是你给114打电话问个电话号码，114说你先别挂，等我给你查下，这时候你拿着电话不能去干别的，只能等他查，然后一段时间后告诉你电话号码是啥啥啥？这里你问电话相当于占用了cpu计算，但查电话只是查数据库，有I/O的耗时等待，但并不占用cpu计算，但是呢，你这个cpu现在想去干个别的干不了，还得等这个I/O结束，这就是阻塞，比如Java。非阻塞呢。你给114打电话，114说好的您挂了吧，我查到后告诉你，这时候你可以去干别的了。I/O查询并没有阻塞你，而是I/O（电话）准备好后再通知你,这就是非阻塞。 显而易见非阻塞更合理，就一个单线程，不断的跑计算，遇到io就异步执行，io完成后再继续，但阻塞式编程可以通过多线程去优化，两者流程大概如下: <img src="http://www.dacai.me/wp-content/uploads/2017/03/屏幕快照-2017-03-21-下午4.42.50-1024x718.png" alt=""> 其实效率差不多，但多线程每个线程都要分配一定的内存，而且我们都知道Java Tomcat是有链接数限制的，异步I/O减少了多线程中创建线程、分配内存、列入调度、切换线程、内存换页、CPU缓存等方面的开销。这个并不是说多线程就不好，各有各的好处吧，如果涉及到大量计算，单线程的cpu会一直被计算占用很难开辟时间去发起I/O操作了。 事件驱动又是怎么回事，上面说的单线程的处理方式其实就是用的事件循环，当执行完计算1后，异步执行了I/O,那cpu知道什么时候继续执行计算2呢，这里看下nodejs的事件循环： <img src="http://www.dacai.me/wp-content/uploads/2017/03/屏幕快照-2017-03-21-下午4.53.06-1024x526.png" alt=""> nodejs有一个事件队列，然后又一个循环不断的遍历这个队列，里面有事件就去执行，首先计算1是一个事件， 在事件队列里发现后去执行，然后发起了I/O,I/O结束后又会塞一个计算2的事件到事件队列里，再循环的时候就遍历到了，然后执行。 说了这么多，动手试试： 首先要先按钮nodejs，官网自己下载。直接新建个hello.js文件，直接写js就可以。比如在里面写</p>
+<p><code>console.log(‘hello world’)。</code></p>
+<p>控制台用node去执行，node hello.js控制台就会打印出hello world。下面来个复杂点的:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cal1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"计算1"</span>)</span><br><span class="line">    callIO(cal2)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cal2</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"计算2结果是"</span> + data)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callIO</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"IO操作"</span>)</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"IO操作完成查到data是123"</span>)</span><br><span class="line">        <span class="keyword">var</span> data = <span class="number">123</span>;</span><br><span class="line">        <span class="keyword">if</span> (callback) &#123;</span><br><span class="line">            callback(data);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line">cal1()</span><br></pre></td></tr></table></figure></p>
+<p>还原了刚才说的计算1–IO–计算2的过程 分析下，执行计算1，中间需要处理I/O了，可能去数据库查了个数据，或者是磁盘读了个文件，也可能是发了个HTTP请求，setTimeOut会js的都明白，这里假装耗时了1秒才完成，执行IO完成后通过IO查到了一个需要计算的data是123，传给计算2去执行计算2，这时候计算2这个事件是调I/O方法时传进来的，这样IO执行完后就把这个事件（计算2）放到了事件队列去执行了。打印如下：</p>
+<p>计算1<br>IO操作<br>IO操作完成查到data是123<br>计算2结果是123</p>
+<p>之前有人误解说nodejs是单线程的，那哪来的线程去执行IO等操作呢，其实nodejs的单线程是说你写的代码是单线程的，nodejs除了有一个线程去执行你的代码，碰到IO操作会有一个线程池去专门处理这些IO，处理代码的事件循环可以算做主线程。 现在nodejs的基本框架理清了，看下他有哪些常用的API，nodejs有个包管理器，类似Java有个maven库，可以通过pom.xml下载依赖的jar包，配置打包流程等，nodejs也有这么个东西，就是npm，通过配置package.json配置nodejs需要的模块，应用的名字，版本，执行方法等。如下一个例子:<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"forever"</span>,</span><br><span class="line">    <span class="attr">"preferGlobal"</span>: <span class="string">"true"</span>,</span><br><span class="line">    <span class="attr">"description"</span>: <span class="string">"A simple CLI tool for ensuring that a given node script runs continuously (i.e. forever)"</span>,</span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"0.15.3"</span>,</span><br><span class="line">    <span class="attr">"author"</span>: <span class="string">"Charlie Robbins &lt;charlie.robbins@gmail.com&gt;"</span>,</span><br><span class="line">    <span class="attr">"maintainers"</span>: [</span><br><span class="line">        <span class="string">"mmalecki &lt;me@mmalecki.com&gt;"</span>,</span><br><span class="line">        <span class="string">"avianflu &lt;charlie@charlieistheman.com&gt;"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"repository"</span>: &#123;</span><br><span class="line">        <span class="attr">"type"</span>: <span class="string">"git"</span>,</span><br><span class="line">        <span class="attr">"url"</span>: <span class="string">"https://github.com/foreverjs/forever.git"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"keywords"</span>: [</span><br><span class="line">        <span class="string">"cli"</span>,</span><br><span class="line">        <span class="string">"fault tolerant"</span>,</span><br><span class="line">        <span class="string">"sysadmin"</span>,</span><br><span class="line">        <span class="string">"tools"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">        <span class="attr">"cliff"</span>: <span class="string">"~0.1.9"</span>,</span><br><span class="line">        <span class="attr">"clone"</span>: <span class="string">"^1.0.2"</span>,</span><br><span class="line">        <span class="attr">"colors"</span>: <span class="string">"~0.6.2"</span>,</span><br><span class="line">        <span class="attr">"flatiron"</span>: <span class="string">"~0.4.2"</span>,</span><br><span class="line">        <span class="attr">"forever-monitor"</span>: <span class="string">"~1.7.0"</span>,</span><br><span class="line">        <span class="attr">"nconf"</span>: <span class="string">"~0.6.9"</span>,</span><br><span class="line">        <span class="attr">"nssocket"</span>: <span class="string">"~0.5.1"</span>,</span><br><span class="line">        <span class="attr">"object-assign"</span>: <span class="string">"^3.0.0"</span>,</span><br><span class="line">        <span class="attr">"optimist"</span>: <span class="string">"~0.6.0"</span>,</span><br><span class="line">        <span class="attr">"path-is-absolute"</span>: <span class="string">"~1.0.0"</span>,</span><br><span class="line">        <span class="attr">"prettyjson"</span>: <span class="string">"^1.1.2"</span>,</span><br><span class="line">        <span class="attr">"shush"</span>: <span class="string">"^1.0.0"</span>,</span><br><span class="line">        <span class="attr">"timespan"</span>: <span class="string">"~2.3.0"</span>,</span><br><span class="line">        <span class="attr">"utile"</span>: <span class="string">"~0.2.1"</span>,</span><br><span class="line">        <span class="attr">"winston"</span>: <span class="string">"~0.8.1"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"devDependencies"</span>: &#123;</span><br><span class="line">        <span class="attr">"broadway"</span>: <span class="string">"~0.3.6"</span>,</span><br><span class="line">        <span class="attr">"eventemitter2"</span>: <span class="string">"0.4.x"</span>,</span><br><span class="line">        <span class="attr">"request"</span>: <span class="string">"2.x.x"</span>,</span><br><span class="line">        <span class="attr">"vows"</span>: <span class="string">"0.7.x"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"bin"</span>: &#123;</span><br><span class="line">        <span class="attr">"forever"</span>: <span class="string">"./bin/forever"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"main"</span>: <span class="string">"./lib/forever"</span>,</span><br><span class="line">    <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">        <span class="attr">"test"</span>: <span class="string">"vows test/**/*-test.js --spec -i"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"engines"</span>: &#123;</span><br><span class="line">        <span class="attr">"node"</span>: <span class="string">"&gt;= 0.8.x"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"license"</span>: <span class="string">"MIT"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这是nodejs众多开发者上传的npm包中的一个叫forever的包的package.json，用来后台运行nodejs应用。看键值就应该明白这个package.json介绍了这个包的名字，版本号，作者，git地址，main方法，依赖的其他包，依赖的nodejs引擎版本还有开源类型。如果你想用这个包，直接npm install forever就行了，node除了开发者上传的包外，自身提供了很多基础的包，比如nodejs内置了http服务器，可以不依赖Tomcat等容器就能启动web服务，如下代码就能启动一个简单的web应用:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> hostname = <span class="string">'127.0.0.1'</span>;</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">3000</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    res.statusCode = <span class="number">200</span>;</span><br><span class="line">    res.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/plain'</span>);</span><br><span class="line">    res.end(<span class="string">'Hello World\\n'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(port, hostname, () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`服务器运行在 http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>是不是很简单，还有fs文件处理，path路径处理，url链接处理，util工具等包，参考nodejs中文API:<a href="http://nodejs.cn/api/" target="_blank" rel="noopener">http://nodejs.cn/api/</a> 说了这么多，nodejs适合做什么呢，通过前面介绍他的优缺点可以看出，nodejs适合做高并发，低IO，低计算的应用，比如网络爬虫，实时聊天，前后端分离的应用。不适合做密集型CPU的应用。大概就是这些，后续再补充</p>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://yoursite.com">大菜</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://yoursite.com/2017/03/21/getting-started-with-node-js/">http://yoursite.com/2017/03/21/getting-started-with-node-js/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/node/">node</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2017/05/13/java-lang-nosuchmethoderror/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">java.lang.NoSuchMethodError</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2017/01/23/recommended-programmer-mac-app/">
+        <span class="next-text nav-default">程序员用Mac推荐APP</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+
+          
+            
+  
+  
+<!-- SOHUCS Comments -->
+<div id="SOHUCS"></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cyrU6pqHk';
+var conf = 'prod_53bf1fe85e73d32c3db7e95ec5b6e0be';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })();
+</script>
+
+
+  
+
+
+          
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/xng" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2018
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">大菜</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+
+    
+  
+
+
+
+  
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.9.0"></script>
+
+  </body>
+</html>
