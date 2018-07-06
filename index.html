@@ -322,21 +322,14 @@
       
         
         
+          
+        
 
         
-          <p>不得不说，mac真的是编程利器，如果你不是做window软件开发，不需要玩儿lol等pc游戏，果断用mac吧，基于Unix的操作系统，各种Linux的命令grep,make,top,ssh等都可以直接使用，安全，快速，免除各种驱动烦恼，免除各种安全卫士，精美的设计，当然还有一堆非常好用的app</p>
-<h4 id="iTerm"><a href="#iTerm" class="headerlink" title="iTerm"></a>iTerm</h4><p>比Terminal好用的终端，包括选中即复制，command + ;  自动补全命令;command + shift +h 历史命令记录，类似history；智能识别网址，邮箱；tap自动修正等，谁用谁知道；</p>
-<h4 id="Quiver"><a href="#Quiver" class="headerlink" title="Quiver"></a>Quiver</h4><p>适合程序员的笔记软件，可以设置代码格式高亮，格式化等。如图 <img src="http://www.dacai.me/wp-content/uploads/2017/01/JsonEx.gif" alt=""> 另外支持markdown</p>
-<h4 id="Cornerstone"><a href="#Cornerstone" class="headerlink" title="Cornerstone"></a>Cornerstone</h4><p>svn客户端工具</p>
-<h4 id="SourceTree"><a href="#SourceTree" class="headerlink" title="SourceTree"></a>SourceTree</h4><p>Git客户端工具</p>
-<h4 id="iHosts"><a href="#iHosts" class="headerlink" title="iHosts"></a>iHosts</h4><p>方便的host切换工具，调试开发必备<img src="http://www.dacai.me/wp-content/uploads/2017/01/ihostsEx.png" alt=""></p>
-<h4 id="QuickMenu"><a href="#QuickMenu" class="headerlink" title="QuickMenu"></a>QuickMenu</h4><p>方便打开常用目录，可以设置快捷键，在鼠标附近展开菜单，方便点击 <img src="http://www.dacai.me/wp-content/uploads/2017/01/quickmenuEx.gif" alt=""></p>
-<h4 id="Sip"><a href="#Sip" class="headerlink" title="Sip"></a>Sip</h4><p>  比如我是做前端开发，就用Css Hex取色结果是16进制的颜色码，自动复制到剪贴板，如果做Android开发，选择Android RGB，取色结果就是Color.rgb(35, 40, 45);可以直接在Android使用的颜色代码。Swift UIColor模式结果便是UIColor(red:0.14, green:0.16, blue:0.18, alpha:1.00);非常方便。</p>
-<h4 id="Snip"><a href="#Snip" class="headerlink" title="Snip"></a>Snip</h4><p>腾讯出的一个小工具，支持简单的编辑，非常好用。<img src="http://www.dacai.me/wp-content/uploads/2017/01/snipEx-300x260.png" alt=""></p>
-<h4 id="Copied"><a href="#Copied" class="headerlink" title="Copied"></a>Copied</h4><p>保持复制记录，免去重复复制粘贴。包括复制过的图片都有记录<img src="http://www.dacai.me/wp-content/uploads/2017/01/copiedEx-683x1024.png" alt=""></p>
-<h4 id="FilleZilla"><a href="#FilleZilla" class="headerlink" title="FilleZilla"></a>FilleZilla</h4><p>FTP连接工具</p>
-<h4 id="Sequal-Pro"><a href="#Sequal-Pro" class="headerlink" title="Sequal Pro"></a>Sequal Pro</h4><p>mysql图形管理工具 等等大概就是这些，其他的IDEA，Sublime Text，Chrome等开发必备的app就不说了，放弃Eclipse吧。。</p>
-
+          <p>不得不说，mac真的是编程利器，如果你不是做window软件开发，不需要玩儿lol等pc游戏，果断用mac吧，基于Unix的操作系统，各种Linux的命令grep,make,top,ssh等都可以直接使用，安全，快速，免除各种驱动烦恼，免除各种安全卫士，精美的设计，当然还有一堆非常好用的app<br>
+          <div class="read-more">
+            <a href="/2017/01/23/recommended-programmer-mac-app/" class="read-more-link">阅读更多</a>
+          </div>
         
       
     </div>
@@ -438,12 +431,14 @@
       
         
         
+          
+        
 
         
-          <p>最近项目上用到spring事务时碰到一个问题，报错信息 Transaction rolled back because it has been marked as rollback-only 现场情况是有两个service：service1，service2；这两个里面都是用的编程式事务，如下。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">transactionTemplate.execute(<span class="keyword">new</span> TransactionCallbackWithoutResult() &#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doInTransactionWithoutResult</span><span class="params">(TransactionStatus status)</span> </span>&#123;</span><br><span class="line"><span class="comment">//CODE</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>如果有异常是以<code>status.setRollbackOnly() ;</code>方式回滚; 现在有个biz层bizA调这两个service<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">transactionTemplate.execute(<span class="keyword">new</span> TransactionCallbackWithoutResult() &#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doInTransactionWithoutResult</span><span class="params">(TransactionStatus status)</span> </span>&#123;</span><br><span class="line">service1();</span><br><span class="line">service2();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>要保证这两个service同时成功，有一个回滚了那整体要回滚，因为不是用的注解式的事务，所以同样包了一层,事务嵌套事务 transactionTemplate.execute 结果执行的时候出现了文章开头的错误；最后查阅了资料后终于解决，记录如下： 原因：因为历史原因，service1和service2是对外提供的接口；有错误是以错误码的形式返回的，所以biz层的事务和service层其实是同一个事务，在service层更改了status，而biz层并不知道，还是继续commit，就导致了status非has been marked as rollback-only异常。所以解决方案就是biz层在调用完service后一定要判断下是否成功，不成功的话要在biz层再做一遍status.setRollbackOnly();</p>
-
+          <p>最近项目上用到spring事务时碰到一个问题，报错信息 Transaction rolled back because it has been marked as rollback-only<br>
+          <div class="read-more">
+            <a href="/2017/01/22/transaction-rolled-back-because-it-has-been-marked-as-rollback-only/" class="read-more-link">阅读更多</a>
+          </div>
         
       
     </div>
@@ -487,40 +482,14 @@
       
         
         
+          
+        
 
         
-          <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>centos自带的yum安装源，安装mysql版本太低，想安装最新的mysql，手动安装又特别麻烦，网上的各种教程也不知道到底用哪个好，今天在官网找到篇官方的安装<a href="http://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/" target="_blank" rel="noopener">文档</a>，按着操作了一遍，mysql顺利安装，翻译如下分享给大家：</p>
-<h4 id="删除系统自带的mysql"><a href="#删除系统自带的mysql" class="headerlink" title="删除系统自带的mysql"></a>删除系统自带的mysql</h4><p>这个文档没写，但要先检查下，执行命令:</p>
-<p><code>rpm -qa | grep mysql*</code></p>
-<p>发现有一个自带的_mysql-libs-5.1.73-7.el6.x86_64_ 卸载掉</p>
-<p><code>yum remove mysql mysql-server mysql-libs compat-mysql51</code></p>
-<h4 id="安装mysql安装源"><a href="#安装mysql安装源" class="headerlink" title="安装mysql安装源"></a>安装mysql安装源</h4><p>打开这个地址<a href="http://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="noopener">http://dev.mysql.com/downloads/repo/yum/</a>，按系统版本需求选择一个下载到CentOS,这里我的是CentOS6.8。选的是<em>mysql57-community-release-el6-9.noarch.rpm</em>。执行命令:</p>
-<p><code>wget http://dev.mysql.com/get/mysql57-community-release-el6-9.noarch.rpm</code></p>
-<p>然后安装：</p>
-<p><code>sudo rpm -Uvh mysql57-community-release-el6-9.noarch.rpm</code></p>
-<p>然后编辑mysql源</p>
-<p><code>vim /etc/yum.repos.d/mysql-community.repo</code></p>
-<p>显示如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">[mysql-connectors-community]</span><br><span class="line">name=MySQL Connectors Community</span><br><span class="line">baseurl=http://repo.mysql.com/yum/mysql-connectors-community/el/6/$basearch/</span><br><span class="line">enabled=0</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql</span><br><span class="line"></span><br><span class="line">[mysql-tools-community]</span><br><span class="line">name=MySQL Tools Community</span><br><span class="line">baseurl=http://repo.mysql.com/yum/mysql-tools-community/el/6/$basearch/</span><br><span class="line">enabled=0</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql</span><br><span class="line"></span><br><span class="line">Enable to use MySQL 5.5</span><br><span class="line"></span><br><span class="line">[mysql55-community]</span><br><span class="line">name=MySQL 5.5 Community Server</span><br><span class="line">baseurl=http://repo.mysql.com/yum/mysql-5.5-community/el/6/$basearch/</span><br><span class="line">enabled=0</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql</span><br><span class="line"></span><br><span class="line">Enable to use MySQL 5.6</span><br><span class="line"></span><br><span class="line">[mysql56-community]</span><br><span class="line">name=MySQL 5.6 Community Server</span><br><span class="line">baseurl=http://repo.mysql.com/yum/mysql-5.6-community/el/6/$basearch/</span><br><span class="line">enabled=0</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql</span><br><span class="line"></span><br><span class="line">[mysql57-community]</span><br><span class="line">name=MySQL 5.7 Community Server</span><br><span class="line">baseurl=http://repo.mysql.com/yum/mysql-5.7-community/el/6/$basearch/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql</span><br><span class="line"></span><br><span class="line">[mysql80-community]</span><br><span class="line">name=MySQL 8.0 Community Server</span><br><span class="line">baseurl=http://repo.mysql.com/yum/mysql-8.0-community/el/6/$basearch/</span><br><span class="line">enabled=0</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql</span><br><span class="line"></span><br><span class="line">[mysql-tools-preview]</span><br><span class="line">name=MySQL Tools Preview</span><br><span class="line">baseurl=http://repo.mysql.com/yum/mysql-tools-preview/el/6/$basearch/</span><br><span class="line">enabled=0</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:/etc/pki/rpm-gpg/RPM-GPG-KEY-mysql</span><br></pre></td></tr></table></figure></p>
-<p>我们要安装的是mysql5.7，将<em>mysql57-community</em>下的enabled设为1,其他版本enabled设为0.保存，查看当前可安装的mysql,命令：</p>
-<p><code>yum repolist enabled | grep mysql</code><br><code>mysql57-community MySQL 5.7 Community Server 164</code></p>
-<p>这时就可以安装了</p>
-<h4 id="安装配置mysql"><a href="#安装配置mysql" class="headerlink" title="安装配置mysql"></a>安装配置mysql</h4><p><code>sudo yum install mysql-community-server</code></p>
-<p>安装完成后先不要启动，编辑my.cnf文件：</p>
-<p><code>vim /etc/my.cnf</code></p>
-<p>在[mysqld]后面加上字符编码utf8</p>
-<p><code>character_set_server=utf8</code></p>
-<p>然后启动</p>
-<p><code>sudo service mysqld start</code></p>
-<p>启动成功后初始密码放在了mysqld日志文件里</p>
-<p><code>sudo grep &#39;temporary password&#39; /var/log/mysqld.log</code><br><code>2017-01-17T15:55:36.100016Z 1 \[Note\] A temporary password is generated for root@localhost: g-ra(sLU=5v9</code></p>
-<p><em>g-ra(sLU=5v9</em>就是初始密码，然后登陆mysql:</p>
-<p><code>mysql -uroot -p</code></p>
-<p>输入密码登陆成功后，执行修改密码命令：</p>
-<p><code>ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;MyNewPass4!&#39;;</code></p>
-<p>注意mysql校验密码复杂度的一个插件是默认安装的，所以设置的密码必要包含大小写字母，数字，字符且最少8个字符。自己设置就可以。然后现在root只能通过localhost连接，想远程连接还要执行命令：</p>
-<p><code>grant all on *.* to root@&#39;%&#39; identified by &#39;***&#39; with grant option;</code><br><code>flush privileges;</code></p>
-<p>允许任何ip地址(%表示允许任何ip地址)的电脑用root帐户和密码(*<em><em>)来访问这个mysql server。</em>.</em>表示库.表，可以设定特定库可以远程访问，防止系统表被远程破坏。ok，可以正常使用了</p>
-
+          <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>centos自带的yum安装源，安装mysql版本太低，想安装最新的mysql，手动安装又特别麻烦，网上的各种教程也不知道到底用哪个好，今天在官网找到篇官方的安装<a href="http://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/" target="_blank" rel="noopener">文档</a>，按着操作了一遍，mysql顺利安装，翻译如下分享给大家：<br>
+          <div class="read-more">
+            <a href="/2017/01/22/centos6-8-yum-install-mysql5-7/" class="read-more-link">阅读更多</a>
+          </div>
         
       
     </div>
